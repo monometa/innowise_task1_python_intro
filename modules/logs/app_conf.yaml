@@ -1,0 +1,22 @@
+version: 1
+formatters:
+  std_format:
+    format: "{asctime} - {name} - {levelname} [{filename}:{lineno}] - {message}"
+    style: "{"
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: std_format
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: std_format
+    filename: modules/logs/app_log.txt
+    mode: a
+loggers:
+  appLogger:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: no
